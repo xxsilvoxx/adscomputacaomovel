@@ -3,10 +3,11 @@ import 'package:tarefas/models/tarefa.dart';
 
 class Home extends StatefulWidget {
   var tarefas = new List<Tarefa>();
+  var teste = 0;
 
   Home() {
     tarefas = [];
-    tarefas.add(new Tarefa(id: 1, descricao: 'Lavar louça', pronta: false));
+    tarefas.add(new Tarefa(id: 1, descricao: 'Lavar louça', pronta: true));
     tarefas.add(new Tarefa(id: 2, descricao: 'Estudar', pronta: false));
     tarefas.add(new Tarefa(id: 3, descricao: 'Pagar boleto', pronta: false));
   }
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Todo'),
+        title: Text('Tarefas '),
         actions: <Widget>[
           PopupMenuButton(itemBuilder: (BuildContext contect) {
             return [
@@ -33,7 +34,16 @@ class _HomeState extends State<Home> {
         itemCount: widget.tarefas.length,
         itemBuilder: (BuildContext ct, int index) {
           final tarefa = widget.tarefas[index];
-          return Text(tarefa.descricao);
+          return CheckboxListTile(
+            title: Text(tarefa.descricao),
+            key: Key(tarefa.id.toString()),
+            value: tarefa.pronta,
+            onChanged: (value) {
+              setState(() {
+                tarefa.pronta = value;
+              });
+            },
+          );
         },
       ),
     );
