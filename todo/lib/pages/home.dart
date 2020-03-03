@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/models/tarefa.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/data/moor_database.dart';
 
 import 'cadastroTarefas.dart';
 
@@ -39,31 +40,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Todo'),
-        actions: <Widget>[
-          PopupMenuButton(itemBuilder: (BuildContext contect) {
-            return [
-              PopupMenuItem(child: Text('Feitas')),
-              PopupMenuItem(child: Text('A fazer'))
-            ];
-          })
-        ],
       ),
-      body: ListView.builder(
-        itemCount: widget.tarefas.length,
-        itemBuilder: (BuildContext ct, int index) {
-          final tarefa = widget.tarefas[index];
-          return CheckboxListTile(
-            title: Text(tarefa.descricao),
-            key: Key(tarefa.id.toString()),
-            value: tarefa.pronta,
-            onChanged: (value) {
-              setState(() {
-                tarefa.pronta = value;
-              });
-            },
-          );
-        },
-      ),
+      body: _buildListTarefasView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _abrirPaginaCadastroTarefa(context);
@@ -72,5 +50,29 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.pink,
       ),
     );
+  }
+
+  StreamBuilder<List<Tarefa>> _buildListTarefasView(BuildContext context) {
+    final database = Provider.of<AppDatabase>(context);
+    return StreamBuilder(
+      stream: database.watchAllTarefas(),
+
+    );
+    // return ListView.builder(
+    //     itemCount: widget.tarefas.length,
+    //     itemBuilder: (BuildContext ct, int index) {
+    //       final tarefa = widget.tarefas[index];
+    //       return CheckboxListTile(
+    //         title: Text(tarefa.descricao),
+    //         key: Key(tarefa.id.toString()),
+    //         value: tarefa.pronta,
+    //         onChanged: (value) {
+    //           setState(() {
+    //             tarefa.pronta = value;
+    //           });
+    //         },
+    //       );
+    //     },
+    //   ),
   }
 }
