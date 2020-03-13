@@ -13,7 +13,9 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     characterService.getListCharacter().then((characters) {
-      characters = characters;
+      setState(() {
+        characters = characters;
+      });
     });
     super.initState();
   }
@@ -24,8 +26,17 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Marvel catálogo'),
       ),
-      body: Center(
-        child: Text('Estou na home'),
+      body: Container(
+        child: characters.length > 0
+            ? ListView.builder(
+                itemCount: characters.length,
+                itemBuilder: (context, index) {
+                  return Text(characters[index].name);
+                },
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
     );
   }
