@@ -9,12 +9,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   CharacterService characterService = new CharacterService();
-  List<Character> characters = [];
+  List<Character> _characters = [];
+
   @override
   void initState() {
     characterService.getListCharacter().then((characters) {
       setState(() {
-        characters = characters;
+        _characters = characters;
       });
     });
     super.initState();
@@ -27,11 +28,11 @@ class _HomeState extends State<Home> {
         title: Text('Marvel catálogo'),
       ),
       body: Container(
-        child: characters.length > 0
+        child: _characters.length > 0
             ? ListView.builder(
-                itemCount: characters.length,
+                itemCount: _characters.length,
                 itemBuilder: (context, index) {
-                  return Text(characters[index].name);
+                  return Text(_characters[index].name);
                 },
               )
             : Center(
