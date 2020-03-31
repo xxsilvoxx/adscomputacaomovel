@@ -32,12 +32,46 @@ class _HomeState extends State<Home> {
             ? ListView.builder(
                 itemCount: _characters.length,
                 itemBuilder: (context, index) {
-                  return Text(_characters[index].name);
+                  final character = _characters[index];
+                  return _criaItemLista(character);
                 },
               )
             : Center(
                 child: CircularProgressIndicator(),
               ),
+      ),
+    );
+  }
+
+  Widget _criaItemLista(Character character) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed('/detalhes', arguments: character);
+      },
+      child: Card(
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: FadeInImage.assetNetwork(
+                placeholder: 'assets/images/place_holder.jpg',
+                image:
+                    '${character.thumbnail.path}.${character.thumbnail.extension}',
+                fit: BoxFit.cover,
+              ),
+            ),
+            ListTile(
+              title: Text(character.name),
+              subtitle: Text(character.description != null &&
+                      character.description.isNotEmpty
+                  ? character.description
+                  : 'Não possui descrição'),
+              trailing: IconButton(
+                icon: Icon(Icons.star),
+                onPressed: () => print('Clicou!'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
