@@ -4,6 +4,7 @@ import 'package:marvelcatalogo/pages/home.dart';
 
 void main() => runApp(MyApp());
 
+//teste
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
