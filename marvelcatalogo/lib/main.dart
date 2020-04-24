@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         '/detalhes': (context) => Detalhes(
               character: ModalRoute.of(context).settings.arguments,
             ),
-        '/usuario': (context) => Usuario()
+        '/usuario': (context) => UsuarioView()
       },
       initialRoute: '/',
     );
