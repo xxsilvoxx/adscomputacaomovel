@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:todo/dao/tarefa_dao.dart';
 import 'package:todo/model/tarefa_model.dart';
 
 class CadastroTarefa extends StatelessWidget {
   final _form = GlobalKey<FormState>();
   Tarefa tarefa = Tarefa();
+  TarefaDao tarefaDao = TarefaDao();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class CadastroTarefa extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           _criaTextFormFieldDecricao(),
-          _criaBotaoSalver(),
+          _criaBotaoSalvar(),
         ],
       ),
     );
@@ -55,25 +57,25 @@ class CadastroTarefa extends StatelessWidget {
   }
 
   // Método responsável por criar o botão de salvar
-  RaisedButton _criaBotaoSalver() {
+  RaisedButton _criaBotaoSalvar() {
     return RaisedButton(
       color: Colors.indigo,
       child: Text(
         'Salvar',
         style: TextStyle(fontSize: 17.0, color: Colors.white),
       ),
-      onPressed: () {
-        _salvar();
-      },
+      onPressed: _salvar,
     );
   }
 
-  void _salvar() {
+  void _salvar() async {
     // Executa as validações do formulário
     var formValido = _form.currentState.validate();
     if (formValido) {
       _form.currentState.save();
-      print(tarefa);
+      tarefa.pronta = false;
+      var id = await tarefaDao.insert(tarefa);
+      print(id);
     }
   }
 }
