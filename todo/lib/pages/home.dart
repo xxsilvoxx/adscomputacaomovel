@@ -73,12 +73,13 @@ class _HomeState extends State<Home> {
   }
 
   /// Método responsável por redirecionar para a tela de cadastros.
-  void _redirecionaParaCadastro() {
-    Navigator.of(context).push(
+  void _redirecionaParaCadastro() async {
+    await Navigator.of(context).push(
       MaterialPageRoute(builder: (_) {
         return CadastroTarefa();
       }),
     );
+    _buscaTarefas();
   }
 
   void _buscaTarefas() async {
