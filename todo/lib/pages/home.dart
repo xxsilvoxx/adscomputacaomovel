@@ -34,12 +34,15 @@ class _HomeState extends State<Home> {
   }
 
   /// Método responsável por criar a lista de tarefas.
-  ListView _criaLista() {
-    return ListView.builder(
-      // Quantidade de vezes que o builder precisa ser contruido, ou seja,
-      // quantos itens elve vai mostrar.
-      itemCount: tarefas.length,
-      itemBuilder: _criaItemBuilder,
+  Widget _criaLista() {
+    return RefreshIndicator(
+      onRefresh: _buscaTarefas,
+      child: ListView.builder(
+        // Quantidade de vezes que o builder precisa ser contruido, ou seja,
+        // quantos itens elve vai mostrar.
+        itemCount: tarefas.length,
+        itemBuilder: _criaItemBuilder,
+      ),
     );
   }
 
@@ -49,27 +52,41 @@ class _HomeState extends State<Home> {
   // que o builder esta contruindo no momento.
   Widget _criaItemBuilder(BuildContext context, int index) {
     final tarefa = tarefas[index];
-    return _criaItemLista(tarefa);
+    return _criaAcoesRemoverPronta(tarefa);
   }
 
-  /// Método responsável por criar cada item da lista de tarefas.
-  CheckboxListTile _criaItemLista(Tarefa tarefa) {
-    return CheckboxListTile(
-      title: Text(tarefa.descricao),
-      // Representa o estado do checkbox (ativo/inativo), (checado/ não checado)
-      value: tarefa.pronta,
-      // Evento disparado quando o usuário clica no item da lista.
-      onChanged: (value) {
-        _checkTarefa(value, tarefa);
+  Widget _criaAcoesRemoverPronta(Tarefa tarefa) {
+    return Dismissible(
+      key: Key(tarefa.id.toString()),
+      child: _criaItemLista(tarefa),
+      background: Container(
+        color: Colors.green,
+      ),
+      secondaryBackground: Container(
+        color: Colors.red,
+      ),
+      onDismissed: (DismissDirection direction) {
+        if (direction == DismissDirection.endToStart) {
+          _removeTarefa(tarefa);
+        } else if (direction == DismissDirection.startToEnd) {
+          print('Tarefa pronta');
+        }
       },
     );
   }
 
-  /// Método responsável por alterar a tarefa para pronta ou não pronta.
-  void _checkTarefa(bool value, Tarefa tarefa) {
+  void _removeTarefa(Tarefa tarefa) {
+    tarefaDao.delete(tarefa.id);
     setState(() {
-      tarefa.pronta = value;
+      tarefas.remove(tarefa);
     });
+  }
+
+  /// Método responsável por criar cada item da lista de tarefas.
+  Widget _criaItemLista(Tarefa tarefa) {
+    return ListTile(
+      title: Text(tarefa.descricao),
+    );
   }
 
   /// Método responsável por redirecionar para a tela de cadastros.
@@ -82,7 +99,7 @@ class _HomeState extends State<Home> {
     _buscaTarefas();
   }
 
-  void _buscaTarefas() async {
+  Future<void> _buscaTarefas() async {
     var result = await tarefaDao.list();
     setState(() => tarefas = result);
   }

@@ -35,4 +35,9 @@ class TarefaDao {
     }
     return tarefas;
   }
+
+  Future<int> delete(int id) async {
+    var database = await createOrGetDatabase();
+    return database.delete('tarefa', where: 'id = ?', whereArgs: [id]);
+  }
 }
