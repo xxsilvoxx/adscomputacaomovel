@@ -11,9 +11,9 @@ class GameBoard extends StatefulWidget {
 }
 
 class _GameBoardState extends State<GameBoard> {
-  List<Carta> cartas = [];
-  var caratasAgrupadas;
-  bool mostrandoErro = false;
+  List<Carta> _cartas = [];
+  var _caratasAgrupadas;
+  bool _mostrandoErro = false;
 
   @override
   void initState() {
@@ -34,53 +34,135 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   void _criaListaCartas() {
-    this.cartas = [
-      Carta(id: 1, grupo: 1, color: Colors.red),
-      Carta(id: 2, grupo: 1, color: Colors.red),
-      Carta(id: 3, grupo: 2, color: Colors.amber),
-      Carta(id: 4, grupo: 2, color: Colors.amber),
-      Carta(id: 5, grupo: 3, color: Colors.blue),
-      Carta(id: 6, grupo: 3, color: Colors.blue),
-      Carta(id: 7, grupo: 4, color: Colors.green),
-      Carta(id: 8, grupo: 4, color: Colors.green),
-      Carta(id: 9, grupo: 5, color: Colors.purple),
-      Carta(id: 10, grupo: 5, color: Colors.purple),
-      Carta(id: 11, grupo: 6, color: Colors.pink),
-      Carta(id: 12, grupo: 6, color: Colors.pink),
-      Carta(id: 13, grupo: 7, color: Colors.brown),
-      Carta(id: 14, grupo: 7, color: Colors.brown),
-      Carta(id: 15, grupo: 8, color: Colors.orange),
-      Carta(id: 16, grupo: 8, color: Colors.orange),
+    this._cartas = [
+      Carta(
+          id: 1,
+          grupo: 1,
+          color: Colors.red,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 2,
+          grupo: 1,
+          color: Colors.red,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 3,
+          grupo: 2,
+          color: Colors.amber,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 4,
+          grupo: 2,
+          color: Colors.amber,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 5,
+          grupo: 3,
+          color: Colors.blue,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 6,
+          grupo: 3,
+          color: Colors.blue,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 7,
+          grupo: 4,
+          color: Colors.green,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 8,
+          grupo: 4,
+          color: Colors.green,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 9,
+          grupo: 5,
+          color: Colors.purple,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 10,
+          grupo: 5,
+          color: Colors.purple,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 11,
+          grupo: 6,
+          color: Colors.pink,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 12,
+          grupo: 6,
+          color: Colors.pink,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 13,
+          grupo: 7,
+          color: Colors.brown,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 14,
+          grupo: 7,
+          color: Colors.brown,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 15,
+          grupo: 8,
+          color: Colors.orange,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+      Carta(
+          id: 16,
+          grupo: 8,
+          color: Colors.orange,
+          image:
+              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
     ];
-    this.cartas.shuffle();
+    this._cartas.shuffle();
   }
 
   List<Widget> _criaItensGrid() {
-    return this.cartas.map((carta) => _criaCardCarta(carta)).toList();
+    return this._cartas.map((carta) => _criaCardCarta(carta)).toList();
   }
 
   Widget _criaCardCarta(Carta carta) {
     return GestureDetector(
       onTap:
-          !carta.visivel && !mostrandoErro ? () => _mostrarCarta(carta) : null,
+          !carta.visivel && !_mostrandoErro ? () => _mostrarCarta(carta) : null,
       child: Card(
         color: carta.visivel ? carta.color : Colors.grey,
-        child: Center(
-          child: _criaTextoCard(carta),
-        ),
+        child: _criaTextoCard(carta),
       ),
     );
   }
 
   Widget _criaTextoCard(Carta carta) {
     if (carta.visivel) {
-      return Text(
-        carta.grupo.toString(),
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 23,
-        ),
+      // return Text(
+      //   carta.grupo.toString(),
+      //   style: TextStyle(
+      //     color: Colors.white,
+      //     fontWeight: FontWeight.bold,
+      //     fontSize: 23,
+      //   ),
+      // );
+      return Image.network(
+        carta.image,
+        fit: BoxFit.cover,
       );
     } else {
       return Icon(
@@ -100,9 +182,9 @@ class _GameBoardState extends State<GameBoard> {
   void _validaAcerto() {
     List<Carta> listaCartasVisiveis = _getCartasVisiveis();
     if (listaCartasVisiveis.length >= 2) {
-      caratasAgrupadas = _getCartasAgrupadas(listaCartasVisiveis);
+      _caratasAgrupadas = _getCartasAgrupadas(listaCartasVisiveis);
       List<Carta> cartasIcorretas = List<Carta>();
-      caratasAgrupadas.forEach((key, value) {
+      _caratasAgrupadas.forEach((key, value) {
         if (value.length < 2) {
           cartasIcorretas.add(value[0]);
         }
@@ -115,7 +197,7 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   List<Carta> _getCartasVisiveis() {
-    return this.cartas.where((Carta carta) => carta.visivel).toList();
+    return this._cartas.where((Carta carta) => carta.visivel).toList();
   }
 
   Map<int, List<Carta>> _getCartasAgrupadas(List<Carta> cartas) {
@@ -124,7 +206,7 @@ class _GameBoardState extends State<GameBoard> {
 
   void _escondeCartasIcorretas(List<Carta> cartasIcorretas) {
     setState(() {
-      mostrandoErro = true;
+      _mostrandoErro = true;
     });
     Timer(Duration(seconds: 1), () {
       for (var i = 0; i < cartasIcorretas.length; i++) {
@@ -133,7 +215,7 @@ class _GameBoardState extends State<GameBoard> {
         });
       }
       setState(() {
-        mostrandoErro = false;
+        _mostrandoErro = false;
       });
     });
   }
