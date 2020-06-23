@@ -40,7 +40,8 @@ class _GameBoardState extends State<GameBoard> {
           grupo: 1,
           color: Colors.red,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'Image.asset(
+                'assets/imagens/1.jpg''),
       Carta(
           id: 2,
           grupo: 1,
@@ -160,7 +161,7 @@ class _GameBoardState extends State<GameBoard> {
       //     fontSize: 23,
       //   ),
       // );
-      return Image.network(
+      return Image.assets(
         carta.image,
         fit: BoxFit.cover,
       );
