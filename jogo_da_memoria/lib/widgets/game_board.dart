@@ -28,7 +28,7 @@ class _GameBoardState extends State<GameBoard> {
 
   Widget _criaGridCartas() {
     return GridView.count(
-      crossAxisCount: 8,
+      crossAxisCount: 3,
       children: _criaItensGrid(),
     );
   }
@@ -161,7 +161,7 @@ class _GameBoardState extends State<GameBoard> {
           grupo: 11,
           color: Colors.red,
           image:
-          'assets/imagens/11.png'),   
+              'assets/imagens/11.png'),   
       Carta(
           id: 22,
           grupo: 11,
@@ -276,6 +276,18 @@ class _GameBoardState extends State<GameBoard> {
           color: Colors.indigo,
           image:
               'assets/imagens/20.jpg'),
+     /* Carta(
+          id: 41,
+          grupo: 21,
+          color: Colors.black,
+          image:
+              'assets/imagens/21.jpg'),
+      Carta(
+          id: 42,
+          grupo: 21,
+          color: Colors.green,
+          image:
+              'assets/imagens/21.jpg'),*/
               
     ];
     this._cartas.shuffle();
