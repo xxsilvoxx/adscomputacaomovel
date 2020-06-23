@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         leading: Icon(Icons.memory),
-        title: Text('Jogo da memória'),
+        title: Text('Jogo da memória Adulto'),
       ),
       body: Container(
         padding: EdgeInsets.all(8.0),

@@ -46,91 +46,116 @@ class _GameBoardState extends State<GameBoard> {
           grupo: 1,
           color: Colors.red,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/2.jpg'),
       Carta(
           id: 3,
           grupo: 2,
           color: Colors.amber,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/3.jpg'),
       Carta(
           id: 4,
           grupo: 2,
           color: Colors.amber,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/4.jpg'),
       Carta(
           id: 5,
           grupo: 3,
           color: Colors.blue,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/5.jpg'),
       Carta(
           id: 6,
           grupo: 3,
           color: Colors.blue,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/6.jpg'),
       Carta(
           id: 7,
           grupo: 4,
           color: Colors.green,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/7.jpg'),
       Carta(
           id: 8,
           grupo: 4,
           color: Colors.green,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/8.jpg'),
       Carta(
           id: 9,
           grupo: 5,
           color: Colors.purple,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/9.jpg'),
       Carta(
           id: 10,
           grupo: 5,
           color: Colors.purple,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/10.jpg'),
       Carta(
           id: 11,
           grupo: 6,
           color: Colors.pink,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/11.jpg'),
       Carta(
           id: 12,
           grupo: 6,
           color: Colors.pink,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/12.jpg'),
       Carta(
           id: 13,
           grupo: 7,
           color: Colors.brown,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/13.jpg'),
       Carta(
           id: 14,
           grupo: 7,
           color: Colors.brown,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/14.jpg'),
       Carta(
           id: 15,
           grupo: 8,
           color: Colors.orange,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/15.jpg'),
       Carta(
           id: 16,
           grupo: 8,
           color: Colors.orange,
           image:
-              'assets/imagens/1.jpg'),
+              'assets/imagens/16.jpg'),
+      Carta(
+          id: 16,
+          grupo: 8,
+          color: Colors.orange,
+          image:
+              'assets/imagens/17.jpg'),
+      Carta(
+          id: 16,
+          grupo: 8,
+          color: Colors.orange,
+          image:
+              'assets/imagens/18.jpg'),
+      Carta(
+          id: 16,
+          grupo: 8,
+          color: Colors.orange,
+          image:
+              'assets/imagens/19.jpg'),
+      Carta(
+          id: 16,
+          grupo: 8,
+          color: Colors.orange,
+          image:
+              'assets/imagens/20.jpg'),
+              
     ];
     this._cartas.shuffle();
   }
@@ -152,14 +177,6 @@ class _GameBoardState extends State<GameBoard> {
 
   Widget _criaTextoCard(Carta carta) {
     if (carta.visivel) {
-      // return Text(
-      //   carta.grupo.toString(),
-      //   style: TextStyle(
-      //     color: Colors.white,
-      //     fontWeight: FontWeight.bold,
-      //     fontSize: 23,
-      //   ),
-      // );
       return Image.asset(
         carta.image,
         fit: BoxFit.cover,
