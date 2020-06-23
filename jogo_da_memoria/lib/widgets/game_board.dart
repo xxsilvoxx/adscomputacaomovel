@@ -161,13 +161,13 @@ class _GameBoardState extends State<GameBoard> {
           grupo: 11,
           color: Colors.red,
           image:
-          'assets/imagens/11.jpg'),   
+          'assets/imagens/11.png'),   
       Carta(
           id: 22,
           grupo: 11,
           color: Colors.red,
           image:
-              'assets/imagens/11.jpg'),
+              'assets/imagens/11.png'),
       Carta(
           id: 23,
           grupo: 12,
@@ -257,13 +257,13 @@ class _GameBoardState extends State<GameBoard> {
           grupo: 19,
           color: Colors.deepPurple,
           image:
-              'assets/imagens/19.jpg'),
+              'assets/imagens/19.png'),
       Carta(
           id: 38,
           grupo: 19,
           color: Colors.tealAccent,
           image:
-              'assets/imagens/19.jpg'),
+              'assets/imagens/19.png'),
       Carta(
           id: 39,
           grupo: 20,
