@@ -28,7 +28,7 @@ class _GameBoardState extends State<GameBoard> {
 
   Widget _criaGridCartas() {
     return GridView.count(
-      crossAxisCount: 4,
+      crossAxisCount: 8,
       children: _criaItensGrid(),
     );
   }
