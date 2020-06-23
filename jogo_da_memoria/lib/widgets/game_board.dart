@@ -40,8 +40,8 @@ class _GameBoardState extends State<GameBoard> {
           grupo: 1,
           color: Colors.red,
           image:
-              'Image.asset(
-                'assets/imagens/1.jpg''),
+              Image.assets(
+                'assets/imagens/1.jpg'),
       Carta(
           id: 2,
           grupo: 1,
