@@ -40,98 +40,97 @@ class _GameBoardState extends State<GameBoard> {
           grupo: 1,
           color: Colors.red,
           image:
-              Image.assets(
-                'assets/imagens/1.jpg'),
+          'assets/imagens/1.jpg'),   
       Carta(
           id: 2,
           grupo: 1,
           color: Colors.red,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 3,
           grupo: 2,
           color: Colors.amber,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 4,
           grupo: 2,
           color: Colors.amber,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 5,
           grupo: 3,
           color: Colors.blue,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 6,
           grupo: 3,
           color: Colors.blue,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 7,
           grupo: 4,
           color: Colors.green,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 8,
           grupo: 4,
           color: Colors.green,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 9,
           grupo: 5,
           color: Colors.purple,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 10,
           grupo: 5,
           color: Colors.purple,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 11,
           grupo: 6,
           color: Colors.pink,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 12,
           grupo: 6,
           color: Colors.pink,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 13,
           grupo: 7,
           color: Colors.brown,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 14,
           grupo: 7,
           color: Colors.brown,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 15,
           grupo: 8,
           color: Colors.orange,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
       Carta(
           id: 16,
           grupo: 8,
           color: Colors.orange,
           image:
-              'https://i.pinimg.com/564x/e4/34/2a/e4342a4e0e968344b75cf50cf1936c09.jpg'),
+              'assets/imagens/1.jpg'),
     ];
     this._cartas.shuffle();
   }
@@ -161,7 +160,7 @@ class _GameBoardState extends State<GameBoard> {
       //     fontSize: 23,
       //   ),
       // );
-      return Image.assets(
+      return Image.asset(
         carta.image,
         fit: BoxFit.cover,
       );
