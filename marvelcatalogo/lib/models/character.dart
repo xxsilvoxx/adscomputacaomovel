@@ -1,3 +1,4 @@
+
 class Character {
   int id;
   String name;
